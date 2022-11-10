@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Prism</title>
+</head>
+<body>
+    <section class="sections" id="ver-prisma">
+        <h1 class="titles">Triangular prism</h1>
+
+        <canvas width="800" height="600" class="dibujo" id="dibujo">
+        </canvas>
+
+        <div class="slidecontainer">
+            <input type="range" min="1" max="90" value="1" class="slider" id="myRange">
+        </div>
+
+        <div>
+            <p class="info">El angulo del láser es:  </p><p class="info" id="angulo"></p>
+        </div>
+        
+
+        <script src="./js/logic.js"></script>
+    </section>
+    
+    
+</body>
+</html>
