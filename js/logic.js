@@ -20,7 +20,7 @@ let yExpectedIncidenceCenter = 400;
 // shape of the triangle
 let side = 200;
 let point1x = xExpectedIncidenceCenter;
-let point1y = yExpectedIncidenceCenter-side*Math.tan(Math.PI/4)/2;
+let point1y = yExpectedIncidenceCenter-side*Math.tan(Math.PI/3)/2;
 
 let point2x = xExpectedIncidenceCenter-side/2;
 let point2y = yExpectedIncidenceCenter;
@@ -68,9 +68,14 @@ function moveLaser(angle){
     let transmittedAngle = Math.asin(refractiveIndexAir*Math.sin(firstIncidenceAngle)/refractiveIndexPrism);
     let sin3 = Math.sin(transmittedAngle+Math.PI/4);
     let ycorte1 = point2y;
+    let xcorte1 = (ycorte1-ycorte)/(Math.tan(transmittedAngle+Math.PI/4))+xcorte;
     let longitud1 = (ycorte1-ycorte)/sin3;
     drawRay(transmittedAngle-Math.PI/4, xcorte, ycorte, longitud1);
     //normal
+
+    let reflectedAngle = -transmittedAngle-3*Math.PI/4;
+    drawRay(reflectedAngle, xcorte1, ycorte1, 300);
+
     drawRay(3*Math.PI/4, xcorte, ycorte, 20);
 
     
