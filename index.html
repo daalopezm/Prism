@@ -11,7 +11,7 @@
     <section class="sections" id="ver-prisma">
         <h1 class="titles">Triangular prism</h1>
 
-        <canvas width="800" height="600" class="dibujo" id="dibujo">
+        <canvas width="800" height="500" class="dibujo" id="dibujo">
         </canvas>
 
         <div class="slidecontainer">
@@ -21,7 +21,15 @@
         <div>
             <p class="info">El angulo del láser es:  </p><p class="info" id="angulo"></p>
         </div>
-        
+
+        <div>
+            <p class="info">El primer angulo de incidencia es:  </p><p class="info" id="primeranguloincidencia"></p>
+        </div>
+
+        <div>
+            <p  class="info">El indice de refracción aire: </p><input type="number" id="refractiveIndexAir" name="refractiveIndexAir" class="info inputs" min="1" max="100" value="1">
+            <p  class="info">El indice de refracción del prisma es: </p><input type="number" id="refractiveIndexPrism" name="refractiveIndexPrism" class="info inputs" min="1" max="100" value="1.5">
+        </div>
 
         <script src="./js/logic.js"></script>
     </section>

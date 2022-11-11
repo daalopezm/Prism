@@ -14,6 +14,10 @@ html {
     display: inline-block;
 }
 
+.inputs{
+    width: 10%;
+}
+
 .slidecontainer {
     width: 60%; /* Width of the outside container */
     margin-right: auto;
