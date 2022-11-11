@@ -1,8 +1,8 @@
 var slider = document.getElementById("myRange");
 var output = document.getElementById("angulo");
 var incidenceAngle = document.getElementById("primeranguloincidencia");
-var inputRefractiveIndexAir = document.getElementById("refractiveIndexAir");
-var inputRefractiveIndexPrism = document.getElementById("refractiveIndexPrism");
+var inputRefractiveIndexAir = document.getElementById("refractiveIndexAir1");
+var inputRefractiveIndexPrism = document.getElementById("refractiveIndexPrism1");
 
 var angle = slider.value;
 output.innerHTML = angle; // Display the default slider value
@@ -19,8 +19,9 @@ let yExpectedIncidenceCenter = 400;
 
 // shape of the triangle
 let side = 200;
+let angleOfSides = Math.PI/4;
 let point1x = xExpectedIncidenceCenter;
-let point1y = yExpectedIncidenceCenter-side*Math.tan(Math.PI/3)/2;
+let point1y = yExpectedIncidenceCenter-side*Math.tan(angleOfSides)/2;
 
 let point2x = xExpectedIncidenceCenter-side/2;
 let point2y = yExpectedIncidenceCenter;
@@ -35,6 +36,16 @@ let b1 = point1y-m1*point1x;
 
 const sectionVerPrisma = document.getElementById('ver-prisma')
 const sectionDibujo = document.getElementById('dibujo')
+
+//Get refractive index values
+
+function getRefractiveIndexAir(){
+    refractiveIndexAir = inputRefractiveIndexAir.value;
+}
+
+function getRefractiveIndexPrism(){
+    refractiveIndexPrism = inputRefractiveIndexPrism.value;
+}
 
 //Laser
 let distanceFromTheExpectedIncidenceCenterPhotoLaser = 300;
@@ -66,17 +77,18 @@ function moveLaser(angle){
     drawRay(-angle, xcoordinate, ycoordinate, longitud);
 
     let transmittedAngle = Math.asin(refractiveIndexAir*Math.sin(firstIncidenceAngle)/refractiveIndexPrism);
-    let sin3 = Math.sin(transmittedAngle+Math.PI/4);
+    let sin3 = Math.sin(transmittedAngle+Math.PI/2-angleOfSides);
     let ycorte1 = point2y;
-    let xcorte1 = (ycorte1-ycorte)/(Math.tan(transmittedAngle+Math.PI/4))+xcorte;
+    let xcorte1 = (ycorte1-ycorte)/(Math.tan(transmittedAngle+Math.PI/2-angleOfSides))+xcorte;
     let longitud1 = (ycorte1-ycorte)/sin3;
-    drawRay(transmittedAngle-Math.PI/4, xcorte, ycorte, longitud1);
-    //normal
+    drawRay(transmittedAngle-angleOfSides, xcorte, ycorte, longitud1);
+    
 
-    let reflectedAngle = -transmittedAngle-3*Math.PI/4;
+    let reflectedAngle = -transmittedAngle+angleOfSides-Math.PI;
     drawRay(reflectedAngle, xcorte1, ycorte1, 300);
-
-    drawRay(3*Math.PI/4, xcorte, ycorte, 20);
+    
+    //normal
+    drawRay(Math.PI/2-angleOfSides+Math.PI/2, xcorte, ycorte, 20);
 
     
 
