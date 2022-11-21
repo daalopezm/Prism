@@ -85,7 +85,19 @@ function moveLaser(angle){
     
 
     let reflectedAngle = -transmittedAngle+angleOfSides-Math.PI;
-    drawRay(reflectedAngle, xcorte1, ycorte1, 300);
+
+    let m3 = (point3y-point1y)/(point3x-point1x)
+    let b3 = point1y-m3*point1x
+
+    let tantheta = -Math.tan(Math.PI-reflectedAngle)
+
+    let ycorte2 = (m3*(tantheta*ycorte1+xcorte1)+b3)/(1+m3*tantheta)
+    let xcorte2 = -tantheta*ycorte2+tantheta*ycorte1+xcorte1
+
+    let longitud2 = Math.hypot((ycorte1-ycorte2),(xcorte1-xcorte2))
+    drawRay(reflectedAngle, xcorte1, ycorte1, longitud2);
+
+    let outangle = 
     
     //normal
     drawRay(Math.PI/2-angleOfSides+Math.PI/2, xcorte, ycorte, 20);
@@ -129,7 +141,7 @@ let prisma = dibujo.getContext("2d")
 function drawPrisma() {
     if (dibujo.getContext) {
         const prisma = dibujo.getContext('2d');
-        prisma.fillStyle = "rgba(189, 224, 254,0.5)";
+        prisma.fillStyle = "rgba(189, 224, 254, 0.5)";
         prisma.beginPath();
         prisma.moveTo(xExpectedIncidenceCenter,yExpectedIncidenceCenter);
         prisma.lineTo(point3x,point3y);
@@ -141,7 +153,6 @@ function drawPrisma() {
 }
 
 
-
 function drawRay(angulo, startx, starty, len ){
     const ray = dibujo.getContext("2d");
     ray.beginPath();
@@ -150,4 +161,5 @@ function drawRay(angulo, startx, starty, len ){
     ray.stroke();
 
 }
+
 
