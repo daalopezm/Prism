@@ -96,11 +96,11 @@ function moveLaser(angle){
 
     let longitud2 = Math.hypot((ycorte1-ycorte2),(xcorte1-xcorte2))
     drawRay(reflectedAngle, xcorte1, ycorte1, longitud2);
-
-    let outangle = 
+    
+    drawRay(-firstIncidenceAngle-Math.PI/2-angleOfSides, xcorte2, ycorte2, 270);
     
     //normal
-    drawRay(Math.PI/2-angleOfSides+Math.PI/2, xcorte, ycorte, 20);
+    drawRay(Math.PI-angleOfSides, xcorte, ycorte, 20);
 
     
 
