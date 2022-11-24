@@ -56,7 +56,7 @@ function drawLaser(xcoordinate, ycoordinate){
     laser.beginPath();
     laser.arc(xcoordinate, ycoordinate, 8, 0, 2 * Math.PI);
     laser.font = "20px Arial";
-    laser.fillText("Laser", xcoordinate, ycoordinate-5);
+    laser.fillText("Laser", xcoordinate, ycoordinate-8);
     laser.closePath();
     laser.fill();
 }
@@ -116,7 +116,7 @@ function drawPhotodiode(xcoordinate, ycoordinate){
     photodiode.beginPath();
     photodiode.arc(xcoordinate, ycoordinate, 8, 0, 2 * Math.PI);
     photodiode.font = "20px Arial";
-    photodiode.fillText("Photodiode", xcoordinate, ycoordinate-5);
+    photodiode.fillText("Photodiode", xcoordinate, ycoordinate-8);
     photodiode.closePath();
     photodiode.fill();
 }
